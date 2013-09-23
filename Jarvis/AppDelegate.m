@@ -251,14 +251,14 @@ NSSpeechSynthesizer *synth;
     
     TimeAndDateMethod *timeAndDate = [[TimeAndDateMethod alloc] init];
     
-    outputText = [outputText stringByAppendingString:[timeAndDate retriveTimeAndDate]];
+    outputText = [outputText stringByAppendingString:[timeAndDate retrieveTimeAndDate]];
     
     //[timeAndDate release];
 	
     CalendarMethod *calendar = [[CalendarMethod alloc] init];
     
-   	outputText = [outputText stringByAppendingString:[calendar retriveiCalEvents]];
-    outputText = [outputText stringByAppendingString:[calendar retriveReminders]];
+   	outputText = [outputText stringByAppendingString:[calendar retrieveiCalEvents]];
+    outputText = [outputText stringByAppendingString:[calendar retrieveReminders]];
     
     //[calendar release];
     
@@ -266,7 +266,7 @@ NSSpeechSynthesizer *synth;
     
     WeatherMethod *weather = [[WeatherMethod alloc] init];
     
-    outputText = [outputText stringByAppendingString:[weather retriveWeather]];
+    outputText = [outputText stringByAppendingString:[weather retrieveWeather]];
     
     //[weather release];
     
@@ -274,7 +274,7 @@ NSSpeechSynthesizer *synth;
     
     EmailMethod *email = [[EmailMethod alloc] init];
     
-    outputText = [outputText stringByAppendingString:[email retriveEmail]];
+    outputText = [outputText stringByAppendingString:[email retrieveEmail]];
     
     //[email release];
     
@@ -283,10 +283,10 @@ NSSpeechSynthesizer *synth;
     NewsAndQuoteMethod *newsAndQuote = [[NewsAndQuoteMethod alloc] init];
     
     // NYTimes
-    outputText = [outputText stringByAppendingString:[newsAndQuote retriveNYTimes]];
+    outputText = [outputText stringByAppendingString:[newsAndQuote retrieveNYTimes]];
     
     // Daily Quote
-    outputText = [outputText stringByAppendingString:[newsAndQuote retriveDailyQuote]];
+    outputText = [outputText stringByAppendingString:[newsAndQuote retrieveDailyQuote]];
     
     //[newsAndQuote release];
     

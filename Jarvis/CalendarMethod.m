@@ -10,7 +10,7 @@
 
 @implementation CalendarMethod
 
-- (NSString *) retriveiCalEvents {
+- (NSString *) retrieveiCalEvents {
     
     // iCal events
     NSString *outputCalendarText = [[NSString alloc] init];
@@ -20,7 +20,7 @@
     NSArray *events = [[CalCalendarStore defaultCalendarStore] eventsWithPredicate:predicate];
     if ([events count] == 0)
     {
-        outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@"You do not have any apoiments today!!!\n\n", @"This message will appear if you do not have any apoiments")];
+        outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@"You do not have any appointments today!\n\n", @"This message will appear if you do not have any appointments")];
     }
     else
     {
@@ -28,13 +28,13 @@
         {
             if([[events objectAtIndex:i] isAllDay])
             {
-                outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@"There is, ", @"")];
+                outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@"On your calendar today is ", @"")];
                 outputCalendarText = [outputCalendarText stringByAppendingString:[[events objectAtIndex:i] title]];
-                outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@", all day", @"")];
+                outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@"which occurs all day", @"")];
             }
             else
             {
-                outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@"There is, ", @"")];
+                outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@"On your calendar today is ", @"")];
                 outputCalendarText = [outputCalendarText stringByAppendingString:[[events objectAtIndex:i] title]];
                 outputCalendarText = [outputCalendarText stringByAppendingString:NSLocalizedString(@", at ", @"")];
                 NSCalendarDate *eventDate = [[[events objectAtIndex:i] startDate] dateWithCalendarFormat:nil timeZone:nil];
@@ -47,12 +47,12 @@
         }
     }
     
-
+    
     return outputCalendarText;
     
 }
 
-- (NSString *) retriveReminders {
+- (NSString *) retrieveReminders {
     
     // Reminders
     NSString *outputRemindersText = [[NSString alloc] init];
@@ -60,7 +60,7 @@
     NSArray *tasks = [[CalCalendarStore defaultCalendarStore] tasksWithPredicate:predicate];
     if ([tasks count] == 0)
     {
-        outputRemindersText = [outputRemindersText stringByAppendingString:NSLocalizedString(@"You do not have any reminders today!!!\n", @"")];
+        outputRemindersText = [outputRemindersText stringByAppendingString:NSLocalizedString(@"You do not have any reminders today!\n", @"")];
     }
     else
     {

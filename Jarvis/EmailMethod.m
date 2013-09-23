@@ -10,7 +10,7 @@
 
 @implementation EmailMethod
 
-- (NSString *) retriveEmail {
+- (NSString *) retrieveEmail {
     
     //////////////////////////////
     // Personalization parameters:
@@ -24,7 +24,7 @@
 							  , nil];
     
     //Unread email count
-    NSString *outputEmailText = [[NSString alloc] init];    
+    NSString *outputEmailText = [[NSString alloc] init];
 	NSDictionary* errorDict;
     NSAppleEventDescriptor* returnDescriptor = NULL;
 	NSAppleScript* scriptObject = [[NSAppleScript alloc] initWithSource:
@@ -35,9 +35,9 @@
 								   if unreadCount is 0 then\n\
 								   set output to \"You have no, new email.\n\"\n\
 								   else if unreadCount is 1 then\n\
-								   set output to \"You have \" & unreadCount & \", new email.\n\"\n\
+								   set output to \"You have \" & unreadCount & \" new email.\n\"\n\
 								   else\n\
-								   set output to \"You have \" & unreadCount & \", new emails.\n\"\n\
+								   set output to \"You have \" & unreadCount & \" new emails.\n\"\n\
 								   end if\n\
 								   repeat with sender in senders\n\
 								   set output to output & \"###\" & sender\n\

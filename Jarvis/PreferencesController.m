@@ -140,7 +140,7 @@
 		woeidCode = [[woeidCode componentsSeparatedByString:@"\""] objectAtIndex:0];
 	}
 	else {
-		NSLog(@"The woeid cannot be retrived!!!");
+		NSLog(@"The woeid cannot be retrieved!!!");
 	}
 
 	NSLog(@"Flickr woeid responce: %@",woeidCode);
@@ -149,7 +149,7 @@
 }
 
 - (IBAction)findLocation:(id)sender {
-	// retrives the City and Country
+	// retrieves the City and Country
 	NSString *locationText = [locationField stringValue];
 	NSString *messageForLabel = [[NSString alloc] initWithFormat:NSLocalizedString(@"Your location is: %@", @"Message after the user inseted his location"), locationText];
 
@@ -198,7 +198,7 @@
 		longitudeCode = [[longitudeCode componentsSeparatedByString:@"\""] objectAtIndex:0];
     }
 	else {
-		NSLog(@"The woeid cannot be retrived!!!");
+		NSLog(@"The woeid cannot be retrieved!!!");
 	}
 
 	[self saveCodeData:woeidCode longitude:longitudeCode latitude:latitudeCode];

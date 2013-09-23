@@ -10,7 +10,7 @@
 
 @implementation TimeAndDateMethod
 
-- (NSString *) retriveTimeAndDate {
+- (NSString *) retrieveTimeAndDate {
     
     // Time and date
     NSString *outputTimeAndDateText = [[NSString alloc] init];
@@ -23,25 +23,33 @@
     else outputTimeAndDateText = NSLocalizedString(@"Good evening", @"Greeting in the evening");
     
     //Reading the username
-    // TODO: read this only if the user want it
-    NSString *userName = NSUserName();
-    //NSString *fullUserName = NSFullUserName();
+    // TODO: read this only if the user wants it
+    //NSString *userName = NSUserName();
+    NSString *fullUserName = NSFullUserName();
     
     outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:@", "];
-    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString: userName];
+    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString: fullUserName];
     outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:@". "];
     
     
-    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString: NSLocalizedString(@"It is ", @"Declares the time. Ex. It is 19:30")];
-    if([date minuteOfHour]<10)
-        outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[NSString stringWithFormat:@"%ld:0%ld.\n", [date hourOfDay], [date minuteOfHour]]];
-    else
-        outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[NSString stringWithFormat:@"%ld:%ld.\n", [date hourOfDay], [date minuteOfHour]]];
+    [dateFormatter setDateFormat:@"h:mm a"];
+    
+    
+    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString: NSLocalizedString(@"The current time is ", @"Declares the time. Ex. It is 19:30")];
+    
+    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[dateFormatter stringFromDate:[NSDate date]]];
+    
+    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:@". "];
+    //if([date minuteOfHour]<10)
+    //outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[NSString stringWithFormat:@"%ld:0%ld.\n", [date hourOfDay], [date minuteOfHour]]];
+    //else
+    //outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[NSString stringWithFormat:@"%ld:%ld.\n", [date hourOfDay], [date minuteOfHour]]];
     
     outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:NSLocalizedString(@"Today is ", @"Declares the day")];
-    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[[dateFormatter standaloneMonthSymbols] objectAtIndex:[date monthOfYear]-1]];
-    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[NSString stringWithFormat:@" %ld, ", [date dayOfMonth]]];
     outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[[dateFormatter standaloneWeekdaySymbols] objectAtIndex:[date dayOfWeek]%7]];
+    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:@", "];
+    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[[dateFormatter standaloneMonthSymbols] objectAtIndex:[date monthOfYear]-1]];
+    outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:[NSString stringWithFormat:@" %ld", [date dayOfMonth]]];
     outputTimeAndDateText = [outputTimeAndDateText stringByAppendingString:@".\n\n"];
     
     
